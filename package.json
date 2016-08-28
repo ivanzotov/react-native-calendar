@@ -1,0 +1,23 @@
+{
+  "name": "react-native-calendar",
+  "version": "1.0.1",
+  "description": "A calendar component for react native",
+  "main": "Calendar.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ivanzotov/react-native-calendar"
+  },
+  "keywords": [
+    "calendar",
+    "React Native",
+    "react",
+    "native",
+    "component"
+  ],
+  "author": "Ivan Zotov",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.15.0",
+    "react-native-i18n": "0.0.8"
+  }
+}
