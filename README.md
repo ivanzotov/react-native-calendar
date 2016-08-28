@@ -2,6 +2,8 @@
 
 A calendar component for React Native.
 
+<img alt="React Native Calendar" src="screenshot.png" width="300">
+
 ## Installation
 
 ```bash
