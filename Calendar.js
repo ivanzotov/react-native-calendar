@@ -36,6 +36,26 @@ export default class Calendar extends Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    var startTime = nextProps.startTime || new Date();
+    var holiday = nextProps.holiday || {};
+    var check = nextProps.check || {};
+    var locked = nextProps.locked || {};
+    var checked = nextProps.checked || '';
+    var headerStyle = nextProps.headerStyle || {};
+
+    var num = nextProps.num || 4;
+    this.setState({
+      startTime: startTime,
+      num: num,
+      holiday: holiday,
+      check: check,
+      locked: locked,
+      checked: checked,
+      headerStyle: headerStyle
+    });
+  }
+
   onPress(dateStr) {
     if (this.props.touchEvent) {
       this.props.touchEvent(dateStr);
@@ -115,7 +135,7 @@ export default class Calendar extends Component {
 
         }
         rows.push(
-          <View key={i*1000} style={styles.row}>{days}</View>
+          <View key={`${i*1000}`} style={styles.row}>{days}</View>
         );
       }
       items.push(
