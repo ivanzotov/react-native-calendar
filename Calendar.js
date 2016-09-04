@@ -20,6 +20,7 @@ export default class Calendar extends Component {
     var startTime = this.props.startTime || new Date();
     var holiday = this.props.holiday || {};
     var check = this.props.check || {};
+    var locked = this.props.locked || {};
     var checked = this.props.checked || '';
     var headerStyle = this.props.headerStyle || {};
 
@@ -29,6 +30,7 @@ export default class Calendar extends Component {
       num: num,
       holiday: holiday,
       check: check,
+      locked: locked,
       checked: checked,
       headerStyle: headerStyle
     };
@@ -45,6 +47,7 @@ export default class Calendar extends Component {
     var num = this.state.num;
     var holiday = this.state.holiday;
     var check = this.state.check;
+    var locked = this.state.locked;
     var checked = this.state.checked;
     var headerStyle = this.state.headerStyle;
 
@@ -80,7 +83,7 @@ export default class Calendar extends Component {
             }
             if(check[dateStr] || checked === dateStr){
               bk = {
-                backgroundColor: '#0bb7db',
+                backgroundColor: locked[dateStr] ? '#777' : '#0bb7db',
                 width:46,
                 height:35,
                 alignItems: 'center',
