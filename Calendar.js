@@ -23,6 +23,8 @@ export default class Calendar extends Component {
     var locked = this.props.locked || {};
     var checked = this.props.checked || '';
     var headerStyle = this.props.headerStyle || {};
+    var itemStyle = this.props.itemStyle || {};
+    var itemWrapStyle = this.props.itemWrapStyle || {};
 
     var num = this.props.num || 4;
     this.state = {
@@ -32,7 +34,9 @@ export default class Calendar extends Component {
       check: check,
       locked: locked,
       checked: checked,
-      headerStyle: headerStyle
+      headerStyle: headerStyle,
+      itemStyle: itemStyle,
+      itemWrapStyle: itemWrapStyle,
     };
   }
 
@@ -43,6 +47,8 @@ export default class Calendar extends Component {
     var locked = nextProps.locked || {};
     var checked = nextProps.checked || '';
     var headerStyle = nextProps.headerStyle || {};
+    var itemStyle = nextProps.itemStyle || {};
+    var itemWrapStyle = nextProps.itemWrapStyle || {};
 
     var num = nextProps.num || 4;
     this.setState({
@@ -52,7 +58,9 @@ export default class Calendar extends Component {
       check: check,
       locked: locked,
       checked: checked,
-      headerStyle: headerStyle
+      headerStyle: headerStyle,
+      itemStyle: itemStyle,
+      itemWrapStyle: itemWrapStyle,
     });
   }
 
@@ -70,6 +78,8 @@ export default class Calendar extends Component {
     var locked = this.state.locked;
     var checked = this.state.checked;
     var headerStyle = this.state.headerStyle;
+    var itemStyle = this.state.itemStyle;
+    var itemWrapStyle = this.state.itemWrapStyle;
 
     var items = [];
     var dateNow = new Date();
@@ -104,8 +114,6 @@ export default class Calendar extends Component {
             if(check[dateStr] || checked === dateStr){
               bk = {
                 backgroundColor: locked[dateStr] ? '#777' : '#0bb7db',
-                width:46,
-                height:35,
                 alignItems: 'center',
                 justifyContent: 'center'
               };
@@ -116,11 +124,11 @@ export default class Calendar extends Component {
             days.push(
               <TouchableHighlight
                 key={j*100}
-                style={[styles.flex_1]}
+                style={[styles.flex_1, itemWrapStyle]}
                 underlayColor="#fff"
                 onPress={this.onPress.bind(this, dateStr)}
                 >
-                <View style={bk}>
+                <View style={[bk, itemStyle]}>
                   <Text style={grayStyle}>{dayNum}</Text>
                 </View>
               </TouchableHighlight>
