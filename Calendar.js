@@ -70,6 +70,7 @@ export default class Calendar extends Component {
     var locked = this.state.locked;
     var checked = this.state.checked;
     var headerStyle = this.state.headerStyle;
+    var styles = this.props.style || styles;
 
     var items = [];
     var dateNow = new Date();
