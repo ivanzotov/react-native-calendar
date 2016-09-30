@@ -103,9 +103,6 @@ export default class Calendar extends Component {
               dayNum = holiday[dateStr];
             }
             if(check[dateStr] || checked === dateStr){
-              bk = {
-                backgroundColor: locked[dateStr] ? '#777' : '#0bb7db',
-              };
               grayStyle = {
                 color:'#fff'
               };
@@ -117,7 +114,7 @@ export default class Calendar extends Component {
                 underlayColor="#fff"
                 onPress={this.onPress.bind(this, dateStr)}
                 >
-                <View style={[bk, style.item]}>
+                <View style={[style.item, locked[dateStr] ? itemGray : itemBlue]}>
                   <Text style={grayStyle}>{dayNum}</Text>
                 </View>
               </TouchableHighlight>
@@ -216,6 +213,12 @@ let styles = StyleSheet.create({
     height:35,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  itemGray: {
+    backgroundColor: '#777',
+  },
+  itemBlue: {
+    backgroundColor: '#007aff',
   },
   row:{
     flexDirection:'row',
