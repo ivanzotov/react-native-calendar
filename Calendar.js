@@ -70,7 +70,7 @@ export default class Calendar extends Component {
     var locked = this.state.locked;
     var checked = this.state.checked;
     var headerStyle = this.state.headerStyle;
-    var styles = this.props.style || styles;
+    var style = this.props.style || styles;
 
     var items = [];
     var dateNow = new Date();
@@ -113,18 +113,18 @@ export default class Calendar extends Component {
             days.push(
               <TouchableHighlight
                 key={j*100}
-                style={[styles.flex_1]}
+                style={[style.flex_1]}
                 underlayColor="#fff"
                 onPress={this.onPress.bind(this, dateStr)}
                 >
-                <View style={[bk, styles.item]}>
+                <View style={[bk, style.item]}>
                   <Text style={grayStyle}>{dayNum}</Text>
                 </View>
               </TouchableHighlight>
             );
           }else{
             days.push(
-              <View key={j*100} style={[styles.flex_1]}>
+              <View key={j*100} style={[style.flex_1]}>
                 <Text></Text>
               </View>
             );
@@ -132,13 +132,13 @@ export default class Calendar extends Component {
 
         }
         rows.push(
-          <View key={`${i*1000}`} style={styles.row}>{days}</View>
+          <View key={`${i*1000}`} style={style.row}>{days}</View>
         );
       }
       items.push(
-        <View key={n} style={[styles.cm_bottom]}>
-          <View style={styles.month}>
-            <Text style={styles.month_text}>
+        <View key={n} style={[style.cm_bottom]}>
+          <View style={style.month}>
+            <Text style={style.month_text}>
               {I18n.t('date.month_names')[(newDate.getMonth() + 1)]} {newDate.getFullYear()}
             </Text>
           </View>
@@ -149,29 +149,29 @@ export default class Calendar extends Component {
     }
 
     return (
-        <View style={styles.calendar_container}>
+        <View style={style.calendar_container}>
 
-          <View style={[styles.row, styles.row_header, this.props.headerStyle]}>
-            <View style={[styles.flex_1]}>
+          <View style={[style.row, style.row_header, this.props.headerStyle]}>
+            <View style={[style.flex_1]}>
               <Text style={this.props.headerStyle}>{I18n.t('date.abbr_day_names')[1]}</Text>
             </View>
-            <View style={[styles.flex_1]}>
+            <View style={[style.flex_1]}>
               <Text style={this.props.headerStyle}>{I18n.t('date.abbr_day_names')[2]}</Text>
             </View>
-            <View style={[styles.flex_1]}>
+            <View style={[style.flex_1]}>
               <Text style={this.props.headerStyle}>{I18n.t('date.abbr_day_names')[3]}</Text>
             </View>
-            <View style={[styles.flex_1]}>
+            <View style={[style.flex_1]}>
               <Text style={this.props.headerStyle}>{I18n.t('date.abbr_day_names')[4]}</Text>
             </View>
-            <View style={[styles.flex_1]}>
+            <View style={[style.flex_1]}>
               <Text style={this.props.headerStyle}>{I18n.t('date.abbr_day_names')[5]}</Text>
             </View>
-            <View style={[styles.flex_1]}>
-              <Text style={[styles.week_highlight,  this.props.headerStyle]}>{I18n.t('date.abbr_day_names')[6]}</Text>
+            <View style={[style.flex_1]}>
+              <Text style={[style.week_highlight,  this.props.headerStyle]}>{I18n.t('date.abbr_day_names')[6]}</Text>
             </View>
-            <View style={[styles.flex_1]}>
-              <Text style={[styles.week_highlight,  this.props.headerStyle]}>{I18n.t('date.abbr_day_names')[0]}</Text>
+            <View style={[style.flex_1]}>
+              <Text style={[style.week_highlight,  this.props.headerStyle]}>{I18n.t('date.abbr_day_names')[0]}</Text>
             </View>
           </View>
 
