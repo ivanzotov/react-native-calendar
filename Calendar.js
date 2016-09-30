@@ -70,6 +70,7 @@ export default class Calendar extends Component {
     var locked = this.state.locked;
     var checked = this.state.checked;
     var headerStyle = this.state.headerStyle;
+    var styles = this.props.style || styles;
 
     var items = [];
     var dateNow = new Date();
@@ -104,10 +105,6 @@ export default class Calendar extends Component {
             if(check[dateStr] || checked === dateStr){
               bk = {
                 backgroundColor: locked[dateStr] ? '#777' : '#0bb7db',
-                width:46,
-                height:35,
-                alignItems: 'center',
-                justifyContent: 'center'
               };
               grayStyle = {
                 color:'#fff'
@@ -120,7 +117,7 @@ export default class Calendar extends Component {
                 underlayColor="#fff"
                 onPress={this.onPress.bind(this, dateStr)}
                 >
-                <View style={bk}>
+                <View style={[bk, styles.item]}>
                   <Text style={grayStyle}>{dayNum}</Text>
                 </View>
               </TouchableHighlight>
@@ -213,6 +210,12 @@ let styles = StyleSheet.create({
     height:55,
     borderBottomWidth:1/PixelRatio.get(),
     borderBottomColor:'#ccc',
+  },
+  item: {
+    width:46,
+    height:35,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   row:{
     flexDirection:'row',
