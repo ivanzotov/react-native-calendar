@@ -71,6 +71,8 @@ export default class Calendar extends Component {
     var checked = this.state.checked;
     var headerStyle = this.state.headerStyle;
     var style = this.props.style || styles;
+    var choseItemBgColor = this.props.choseItemBgColor || '#007aff';
+    var lockedItemBgColor = this.props.lockedItemBgColor || '#777';
 
     var items = [];
     var dateNow = new Date();
@@ -103,6 +105,9 @@ export default class Calendar extends Component {
               dayNum = holiday[dateStr];
             }
             if(check[dateStr] || checked === dateStr){
+              bk = {
+                backgroundColor: locked[dateStr] ? lockedItemBgColor : choseItemBgColor,
+              };
               grayStyle = {
                 color:'#fff'
               };
@@ -110,11 +115,11 @@ export default class Calendar extends Component {
             days.push(
               <TouchableHighlight
                 key={j*100}
-                style={[style.flex_1]}
+                style={[style.flex_1, style.itemWrap]}
                 underlayColor="#fff"
                 onPress={this.onPress.bind(this, dateStr)}
                 >
-                <View style={[style.item, locked[dateStr] ? itemGray : itemBlue]}>
+                <View style={[style.item, bk]}>
                   <Text style={grayStyle}>{dayNum}</Text>
                 </View>
               </TouchableHighlight>
@@ -208,17 +213,12 @@ let styles = StyleSheet.create({
     borderBottomWidth:1/PixelRatio.get(),
     borderBottomColor:'#ccc',
   },
+  itemWrap: {},
   item: {
     width:46,
     height:35,
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  itemGray: {
-    backgroundColor: '#777',
-  },
-  itemBlue: {
-    backgroundColor: '#007aff',
   },
   row:{
     flexDirection:'row',
