@@ -100,6 +100,11 @@ export default class Calendar extends Component {
               grayStyle = {
                 color:'#ccc'
               };
+            } else {
+              var day = dateObj.getDay()
+              if ((day == 6) || (day == 0)) {
+                grayStyle.color = this.props.holidaysColor || 'red'
+              }
             }
             if(holiday[dateStr]){
               dayNum = holiday[dateStr];
