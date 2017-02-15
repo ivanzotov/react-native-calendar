@@ -182,7 +182,7 @@ export default class Calendar extends Component {
             </View>
           </View>
 
-          <ScrollView keyboardShouldPersistTaps={true} style={{flex:1}} automaticallyAdjustContentInsets={false}>
+          <ScrollView keyboardShouldPersistTaps="always" style={{flex:1}} automaticallyAdjustContentInsets={false}>
 
             {items}
 
